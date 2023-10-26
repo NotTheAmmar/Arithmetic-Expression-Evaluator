@@ -246,7 +246,14 @@ bool isInvalid(wxString str) {
         } else if (str[i] == ')') {
             if (i + 1 == str.length()) break; 
 
-            if (isOperator(str[i + 1]) && ((str[i + 2] >= 48 && str[i + 2] <= 57) || str[i + 2] == '(')) {
+
+            if (str[i + 1] == ')') {
+                i++;
+                continue;
+            }
+
+            if ((isOperator(str[i + 1]) || str[i + 1] == ')') 
+                && ((str[i + 2] >= 48 && str[i + 2] <= 57) || str[i + 2] == '(')) {
                 i += 2;
                 continue;
             } else {
